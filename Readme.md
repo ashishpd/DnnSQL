@@ -1,2 +1,1 @@
-This is [an example](http://example.com/ "Title") inline link.
 Blog on BulkUserCreation can be found [here](http://www.dotnetnuke.com/Resources/Blogs/EntryId/3524/Tips-from-Ash-Create-test-users-in-bulk-using-SQL.aspx)
