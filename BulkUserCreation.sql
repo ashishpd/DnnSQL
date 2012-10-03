@@ -46,6 +46,7 @@ WHERE UserName = @UserToCopy
 IF @ApplicationId is NULL
 	BEGIN
 		RAISERROR ('User does not exist', 16, 1);
+		return
 	END
 
 SELECT  @RoleID = [RoleID] FROM dbo.dnn_Roles WHERE RoleName = 'Registered Users'
