@@ -23,6 +23,8 @@ DECLARE @RoleMemberships NVARCHAR(1000)
 DECLARE @StartingUserID INT
 DECLARE @UsersToCreate INT
 
+DECLARE @PortalID INT = 1
+
 --Feel free to change user from 'admin' to 'something else'
 SET @UserToCopy = 'testuser'
 
@@ -31,7 +33,7 @@ SET @UserToCopy = 'testuser'
 SET @RoleMemberships = 'Testrole1,Testrole2'
 
 -- bump it to number where you want to start username from 
-SET @StartingUserID = 1
+SET @StartingUserID = 200
 
 -- set it number of users you want to create
 SET @UsersToCreate = 100
@@ -43,7 +45,6 @@ DECLARE @Password NVARCHAR(1000)
 DECLARE @Email NVARCHAR(100)
 DECLARE @PasswordSalt NVARCHAR(1000)
 DECLARE @ApplicationId NVARCHAR(1000)
-DECLARE @PortalID INT = 0
 DECLARE @RoleID INT
 DECLARE @AspUserID UNIQUEIDENTIFIER
 DECLARE @CurrentDate AS DATETIME = GETUTCDATE()
