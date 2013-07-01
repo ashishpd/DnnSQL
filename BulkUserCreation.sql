@@ -23,19 +23,20 @@ DECLARE @RoleMemberships NVARCHAR(1000)
 DECLARE @StartingUserID INT
 DECLARE @UsersToCreate INT
 
-DECLARE @PortalID INT = 1
+DECLARE @PortalID INT = 0
 
 --Feel free to change user from 'admin' to 'something else'
 SET @UserToCopy = 'testuser'
+
 -- RoleMemberships to add to user. No need to add "Registered Users" as this will always be added. 
 -- Can be left empty for no extra role memberships
 SET @RoleMemberships = 'Testrole1,Testrole2'
 
 -- bump it to number where you want to start username from 
-SET @StartingUserID = 200
+SET @StartingUserID = 100000
 
 -- set it number of users you want to create
-SET @UsersToCreate = 100
+SET @UsersToCreate = 350000
 /** END Configuration **/
 
 
@@ -231,7 +232,9 @@ WHILE @Counter < @UsersToCreate
                   CreatedByUserID ,
                   CreatedOnDate ,
                   LastModifiedByUserID ,
-                  LastModifiedOnDate
+                  LastModifiedOnDate,
+				  Status,
+				  IsOwner
 			    )
         VALUES  ( @UserID , -- UserID - int
                   @RoleID , -- RoleID - int
@@ -241,7 +244,9 @@ WHILE @Counter < @UsersToCreate
                   0 , -- CreatedByUserID - int
                   @CurrentDate , -- CreatedOnDate - datetime
                   0 , -- LastModifiedByUserID - int
-                  @CurrentDate  -- LastModifiedOnDate - datetime
+                  @CurrentDate,  -- LastModifiedOnDate - datetime
+				  1,
+				  0
 			    )
 
         INSERT  INTO dbo.dnn_UserPortals
