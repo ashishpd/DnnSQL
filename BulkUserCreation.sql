@@ -27,7 +27,6 @@ DECLARE @PortalID INT = 1
 
 --Feel free to change user from 'admin' to 'something else'
 SET @UserToCopy = 'testuser'
-
 -- RoleMemberships to add to user. No need to add "Registered Users" as this will always be added. 
 -- Can be left empty for no extra role memberships
 SET @RoleMemberships = 'Testrole1,Testrole2'
@@ -348,7 +347,7 @@ WHILE @Counter < @UsersToCreate
                         SET @SingleRole = SUBSTRING(@RoleMembershipsCopy, 0,
                                                     PATINDEX('%,%',
                                                              @RoleMembershipsCopy))
-                        SELECT  @SingleRole
+                        --SELECT  @SingleRole
 
                         SET @RoleMembershipsCopy = SUBSTRING(@RoleMembershipsCopy,
                                                              LEN(@SingleRole
@@ -359,7 +358,7 @@ WHILE @Counter < @UsersToCreate
                     BEGIN
                         SET @SingleRole = @RoleMembershipsCopy
                         SET @RoleMembershipsCopy = NULL
-                        SELECT  @SingleRole
+                        --SELECT  @SingleRole
                     END
                 SET @SingleRole = LTRIM(RTRIM(@SingleRole))
 
